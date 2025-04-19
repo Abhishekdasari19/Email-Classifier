@@ -1,2 +1,32 @@
-# Email-Classifier
-The goal of this assignment is to design and implement an email classification system for a company's support team. The system should categorize incoming support emails into predefined categories while ensuring that personal information (PII) is masked before processing. After classification, the masked data should be restored to its original form.
+# Email Classification with PII Masking
+
+This project masks personal information from support emails and classifies them into categories like Billing, Technical, etc., using a trained machine learning model.
+
+## 🚀 Features
+- Regex-based PII masking (names, emails, cards, etc.)
+- Naive Bayes classification on masked content
+- FastAPI deployment ready for Hugging Face Spaces
+
+## 📦 Setup
+```bash
+pip install -r requirements.txt
+uvicorn app:app --reload
+```
+
+## 🌐 API Example
+POST `/`
+```json
+{
+  "email_body": "Hi my name is John Doe, my email is john@example.com and my issue is with billing."
+}
+```
+
+## ✅ Output Format
+```json
+{
+  "input_email_body": "...",
+  "list_of_masked_entities": [...],
+  "masked_email": "...",
+  "category_of_the_email": "Billing Issues"
+}
+```
